@@ -1,4 +1,4 @@
-from blog import create_app, db
+from src import create_app, db
 
 application = create_app()
 

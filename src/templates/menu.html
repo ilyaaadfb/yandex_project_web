@@ -1,0 +1,31 @@
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+            <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+        </div>
+        {% if current_user.is_authenticated %}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url_for('main.home') }}" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="{{ url_for('main.src') }}" class="nav-link px-2">Public</a></li>
+            <li><a href="{{ url_for('users.account') }}" class="nav-link px-2">Account</a></li>
+            <li><a href="{{ url_for('users.logout') }}" class="nav-link px-2">Exit</a></li>
+        </ul>
+        <div class="col-md-3 text-end"></div>
+        {% else %}
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{{ url_for('main.home') }}" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="{{ url_for('main.src') }}" class="nav-link px-2">Public</a></li>
+            <li><a href="{{ url_for('users.account') }}" class="nav-link px-2">Account</a></li>
+        </ul>
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2"><a href="{{ url_for('users.login') }}">Sign-in</a>
+            </button>
+            <button id="Enter" type="button" onclick="window.location.href = '{{ url_for('users.register') }}' ; " class="btn btn-primary">Sign-up</button>
+        </div>
+        {% endif %}
+    </header>
+</div>
