@@ -53,30 +53,13 @@ class Post(db.Model):
     content = db.Column(db.Text(60), nullable=False)
     category = db.Column(db.String(100), nullable=False)
     image_post = db.Column(db.String(50), nullable=False, default='default.jpg')
-    views = db.Column(db.Integer, default=0)
-    likes = db.Column(db.Integer, default=0)
     slug = db.Column(db.String(), unique=True, index=True)
     tags = db.relationship('Tag', backref='tag_post', lazy=True, cascade="all, delete-orphan")
-    comments = db.relationship('Comment', backref='comment_post', lazy=True, cascade="all, delete-orphan")
-
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
     def __repr__(self):
         return f'Post({self.id}, {self.title}, {self.date_posted}, {self.image_post}, {self.user_id})'
-
-
-class Comment(db.Model):
-    __tablename__ = "comments"
-
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(20), unique=False, nullable=False)
-    body = db.Column(db.Text(200), nullable=False)
-    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
-    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='CASCADE'), nullable=False)
-
-    def __repr__(self):
-        return f'Comment({self.body}, {self.date_posted.strftime("%d.%m.%Y-%H.%M")}, {self.post_id})'
 
 
 class Tag(db.Model):

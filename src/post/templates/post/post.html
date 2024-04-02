@@ -29,16 +29,6 @@
         </div>
 
 
-        <!---->
-<!--                    <center>-->
-<!--                        <h2 class="article-title" align="left"> {{ post.title|safe }}</h2>#}-->
-<!--                        <p class="article-content" align="left">{{ post.content|safe }}</p>#}-->
-
-<!--                        <img src="{{ image_file }}" alt="post_img"><br>#}-->
-<!--                    </center>-->
-        <!---->
-
-
         <div class="tags">
             {% for i in post.tags %}
 
@@ -57,23 +47,6 @@
             {% endfor %}
 
         </div>
-
-
-<!--                    -->
-<!--                    {% if post.author == current_user %}-->
-<!--                        <form method="POST" action="">-->
-<!--                            {{ form_add_tag.hidden_tag() }}-->
-<!--                            Связь {{ form_add_tag.tag_form(style='width:750px; color: blue; font-size: 18px;', placeholder='Ссылка на тг') }}-->
-<!--                            {{ form_add_tag.submit(class='btn_new_post', value='Добавить') }}-->
-<!--                        </form>-->
-<!--                    {% else %}-->
-<!--                    {% endif %}-->
-
-<!--                    <div class="post_stat_side">-->
-<!--                        <div class="left_side_stat_post">&#128065; {{ post.views }}</div>-->
-<!--                        <div class="right_side_stat_post">&#10084; {{ post.likes }}</div>-->
-<!--                    </div>-->
-<!--        -->
 
 
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -99,65 +72,6 @@
             </div>
 
         </div>
-
-
-<!--                    -->
-<!--                    <div class="content_comment">-->
-<!--                        <form method="POST" action="{{ url_for('posts.post', slug=post.slug) }}">-->
-<!--                            {{ form_add_comment.hidden_tag() }}-->
-<!--                            <fieldset class="form-group">-->
-<!--                                <div class="form-group">-->
-
-<!--                                    {{ form_add_comment.body(class="form-control form-control-lg") }}-->
-<!--                                </div>-->
-<!--                            </fieldset>-->
-<!--                            <p></p>-->
-
-<!--                            <div class="form-group">-->
-
-<!--                                {{ form_add_comment.submit(class="btn btn-outline-info") }}-->
-<!--                            </div>-->
-<!--                        </form>-->
-<!--                    </div>-->
-
-
-
-<!--        <div class="comment_side">-->
-<!--            {% for i in comment %}-->
-<!--            <div class="single_comment">-->
-<!--                <div class="head_comment">-->
-<!--                    <div class="left_comment_side">-->
-<!--                        <a href="{{ url_for('users.user_posts', username=i.username) }}">{{ i.username }}</a>-->
-<!--                    </div>-->
-<!--                    <div class="right_comment_side">{{ i.date_posted.strftime('%d.%m.%Y-%H.%M') }}</div>-->
-<!--                </div>-->
-
-<!--                <div class="body_comment">-->
-<!--                    {{ i.body }} {{ i.id }}-->
-<!--                </div>-->
-<!--                <div class="stat_comment">-->
-
-<!--                    <div class="left_stat_side">&#128065; {{ i.views }}</div>-->
-<!--                    <div class="right_stat_side">&#10084; {{ i.likes }}</div>-->
-
-<!--                </div>-->
-<!--                {% if post.author == current_user or current_user.username == i.username or current_user.is_admin %}-->
-<!--                <a href="{{ url_for( 'posts.update_comment', comment_id=i.id) }}"><p>Обновить-->
-<!--                    комментарий</p></a>-->
-<!--                <a href="{{ url_for( 'posts.delete_comment', comment_id=i.id) }}"><p>Удалить комментарий</p>-->
-<!--                </a>-->
-<!--                {% else %}-->
-
-<!--                {% endif %}-->
-
-<!--            </div>-->
-<!--            {% endfor %}-->
-
-
-<!--        </div>-->
-
-
-
 
 
     </div>

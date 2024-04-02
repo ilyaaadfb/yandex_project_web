@@ -36,11 +36,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Войти')
 
 
-class AddCommentForm(FlaskForm):
-    body = StringField("Ваш комментарий", validators=[InputRequired()])
-    submit = SubmitField("Опубликовать")
-
-
 class UpdateAccountForm(FlaskForm):
     username = StringField('Имя пользователя', validators=[DataRequired(), Length(min=4, max=20)])
     email = StringField('Емайл', validators=[DataRequired(), Email()])

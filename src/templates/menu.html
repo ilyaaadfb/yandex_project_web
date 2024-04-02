@@ -21,9 +21,12 @@
             <li><a href="{{ url_for('users.account') }}" class="nav-link px-2">Account</a></li>
         </ul>
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2"><a href="{{ url_for('users.login') }}">Sign-in</a>
+            <button type="button" class="btn btn-outline-primary me-2"><a
+                    href="{{ url_for('users.login') }}">Sign-in</a>
             </button>
-            <button id="Enter" type="button" onclick="window.location.href = '{{ url_for('users.register') }}' ; " class="btn btn-primary">Sign-up</button>
+            <button id="Enter" type="button" onclick="window.location.href = '{{ url_for('users.register') }}' ; "
+                    class="btn btn-primary">Sign-up
+            </button>
         </div>
         {% endif %}
     </header>

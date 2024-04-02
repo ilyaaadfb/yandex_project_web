@@ -3,18 +3,18 @@
 {% block content %}
 
 
-
 <div class="site_content_area">
- {% if not all_posts %}
+    {% if not all_posts %}
 
-        <h3 style="margin:0 auto;">{{ nothing }}</h3>
-     <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Оставить запрос</a></button>
+    <h3 style="margin:0 auto;">{{ nothing }}</h3>
+    <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Оставить запрос</a>
+    </button>
 
-  {% else %}
+    {% else %}
     <div class="site_content">
-    А
+        А
 
-          {% for post in posts.items %}
+        {% for post in posts.items %}
 
         <div class="post">
             <div class="info_user_site">
@@ -32,7 +32,8 @@
             </div>
 
             <div class="posts_site">
-                <h2><a class="article-title" href="{{ url_for('posts.post', slug=post.slug) }}">{{ post.title|safe }}</a></h2>
+                <h2><a class="article-title" href="{{ url_for('posts.post', slug=post.slug) }}">{{ post.title|safe
+                    }}</a></h2>
                 {% if post.content|count >= 100 or post %}
                 <p class="article-content" align="left">{{ post.content|safe|truncate(250, True) }}
                     {% else %}
@@ -62,23 +63,23 @@
     <div class="info_posts_user">
 
 
-            <h4>Публикаций на сайте: {{ posts.total }}</h4>
+        <h4>Публикаций на сайте: {{ posts.total }}</h4>
 
 
-            {% for user in all_users %}
-                {% if user.posts|count > 0 %}
-                <p><a class="mr-2" href="{{ url_for('users.user_posts', username=user.username) }}">{{ user.username }}</a>({{ user.posts|count }})</p>
-                {% endif%}
-            {% endfor %}
-                   <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Оставить запрос</a></button>
+        {% for user in all_users %}
+        {% if user.posts|count > 0 %}
+        <p><a class="mr-2" href="{{ url_for('users.user_posts', username=user.username) }}">{{ user.username }}</a>({{
+            user.posts|count }})</p>
+        {% endif%}
+        {% endfor %}
+        <button class="create_post_btn"><a href="{{ url_for('posts.new_post') }}" class="btn_sign_in">Оставить
+            запрос</a></button>
 
     </div>
-
-
 
 
     {% endif %}
-    </div>
+</div>
 
 
 {% endblock content %}
