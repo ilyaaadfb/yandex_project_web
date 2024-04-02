@@ -12,7 +12,7 @@ class PostForm(FlaskForm):
                                                  ('История', 'история'), ('Обществознание', 'обществознание'),
                                                  ('Геометрия', 'геометрия'), ('Литература', 'литература'),
                                                  ('Физика', 'физика'), ('Химия', 'химия')])
-    tag_form = StringField('Тэг')
+    tg_form = StringField('Тг')
     picture = FileField('Изображение (png, jpg)', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Опубликовать')
 

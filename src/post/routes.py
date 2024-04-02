@@ -6,7 +6,7 @@ from flask_login import current_user, login_required
 from slugify import slugify
 
 from src import db
-from src.models import Post, Tag
+from src.models import Post, Tg
 from src.post.forms import PostForm, PostUpdateForm
 
 posts = Blueprint('posts', __name__, template_folder='templates')
@@ -24,11 +24,11 @@ def new_post():
             post.slug = slugify(post.title)
             db.session.flush()
 
-            name = form.tag_form.data.split('/')
+            name = form.tg_form.data.split('/')
             for i in name:
-                tag_post = Tag(name=i)  # создаю тег
-                tag_post.post_id = post.id
-                db.session.add(tag_post)
+                tg_post = Tg(name=i)  # создаю тег
+                tg_post.post_id = post.id
+                db.session.add(tg_post)
             db.session.commit()
             flash('Пост был опубликован!', 'success')
             return redirect(url_for('main.src'))
@@ -54,24 +54,24 @@ def post(slug):
     post = Post.query.filter_by(slug=slug).first()
     form_post = PostForm()
     if request.method == 'POST':
-        def add_tag():
-            name = form_post.tag_form.data
+        def add_tg():
+            name = form_post.tg_form.data
             if name:
                 name = name.split('/')
                 for i in name:
-                    tag_post = Tag(name=i)
-                    tag_post.post_id = post.id
-                    db.session.add(tag_post)
+                    tg_post = Tg(name=i)
+                    tg_post.post_id = post.id
+                    db.session.add(tg_post)
                 db.session.commit()
                 flash('Тег к посту был добавлен', "success")
                 return redirect(url_for('posts.post', slug=post.slug))
 
-        add_tag()
-    form_post.tag_form.data = ''
+        add_tg()
+    form_post.tg_form.data = ''
     image_file = url_for('static',
                          filename=f'profile_pics/' + 'users/' + post.author.username + '/post_images/' + post.image_post)
     return render_template('post/post.html', title=post.title, post=post, image_file=image_file,
-                           form_add_tag=form_post)
+                           form_add_tg=form_post)
 
 
 @posts.route('/post/<string:slug>/update', methods=['GET', 'POST'])
@@ -117,13 +117,13 @@ def category(category_str):
                            current_category=current_category, title='Рубрика ' + category_str)
 
 
-@posts.route('/tags/<string:tag_str>', methods=['GET', 'POST'])
+@posts.route('/tgs/<string:tg_str>', methods=['GET', 'POST'])
 @login_required
-def tag(tag_str):
-    current_tag = Tag.query.filter_by(name=tag_str).first_or_404()
-    name_tags = Tag.query.filter(Tag.name == current_tag.name).all()
-    return render_template('post/all_post_tag.html', name_tags=name_tags,
-                           current_tag=current_tag, title='Статьи тега ' + current_tag.name)
+def tg(tg_str):
+    current_tg = Tg.query.filter_by(name=tg_str).first_or_404()
+    name_tgs = Tg.query.filter(Tg.name == current_tg.name).all()
+    return render_template('post/all_post_tg.html', name_tgs=name_tgs,
+                           current_tg=current_tg, title='Статьи тега ' + current_tg.name)
 
 
 @posts.route('/post/<string:slug>/delete', methods=['POST', 'GET'])

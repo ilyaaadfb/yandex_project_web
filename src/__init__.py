@@ -50,7 +50,7 @@ def create_app():
     migrate.init_app(application, db, render_as_batch=True)
     mail.init_app(application)
 
-    from src.models import User, Post, Tag
+    from src.models import User, Post, Tg
 
     from src.main.routes import main
     from src.user.routes import users

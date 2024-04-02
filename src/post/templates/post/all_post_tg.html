@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="posts_category_side">
-    Публикация тега: {{ current_tag.name }}
+    Публикация тега: {{ current_tg.name }}
 
 
     <div class="list_posts_category">
@@ -15,7 +15,7 @@
             <li style="font-size: 20px; list-style: none;"><a
                     href="{{ url_for('posts.post', slug=post.tag_post.slug) }}" style=" text-decoration: none;">
 
-                {{ post.tag_post.title|capitalize }}</a> {{ post.tag_post.author.username }}
+                {{ post.tg_post.title|capitalize }}</a> {{ post.tg_post.author.username }}
             </li>
 
             {% endfor %}

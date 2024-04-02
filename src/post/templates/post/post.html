@@ -34,11 +34,11 @@
 
             <div class="bound">
                 {% if post.author == current_user %}
-                <div class="tag"><b><a
+                <div class="tg"><b><a
                         href="https://www.google.ru/" target="_blank">{{ i.name }}</a></b></div>
                 {% else %}
-                <div class="tag"><b><a
-                        href="{{ url_for('posts.tag', tag_str=i.name) }}">{{ i.name }}</a></b></div>
+                <div class="tg"><b><a
+                        href="{{ url_for('posts.tg', tg_str=i.name) }}">{{ i.name }}</a></b></div>
                 {% endif %}
 
 

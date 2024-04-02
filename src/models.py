@@ -20,7 +20,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    role = db.Column(db.String(20), index=True)
+    # role = db.Column(db.String(20), index=True)
     last_seen = db.Column(db.DateTime)
     posts = db.relationship('Post', backref='author', lazy=True)
 
@@ -37,9 +37,9 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    @property
-    def is_admin(self):
-        return self.role == 'admin'
+    # @property
+    # def is_admin(self):
+    #     return self.role == 'admin'
 
     def __repr__(self):
         return f'User({self.id}, {self.username}, {self.email}, {self.password}, {self.image_file})'
@@ -54,7 +54,7 @@ class Post(db.Model):
     category = db.Column(db.String(100), nullable=False)
     image_post = db.Column(db.String(50), nullable=False, default='default.jpg')
     slug = db.Column(db.String(), unique=True, index=True)
-    tags = db.relationship('Tag', backref='tag_post', lazy=True, cascade="all, delete-orphan")
+    tags = db.relationship('Tg', backref='tag_post', lazy=True, cascade="all, delete-orphan")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
@@ -62,11 +62,11 @@ class Post(db.Model):
         return f'Post({self.id}, {self.title}, {self.date_posted}, {self.image_post}, {self.user_id})'
 
 
-class Tag(db.Model):
+class Tg(db.Model):
     __tablename__ = 'tags'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=False, nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='CASCADE'), nullable=False)
 
     def __repr__(self):
-        return f'Tag({self.id}, {self.name}, {self.post_id})'
+        return f'Tg({self.id}, {self.name}, {self.post_id})'
