@@ -11,7 +11,7 @@ from src import bcrypt, db
 from src.models import User, Post
 from src.settings import UPLOAD_FOLDER
 from src.user.forms import RegistrationForm, LoginForm, UpdateAccountForm, ResetPasswordForm, RequestResetForm
-from src.user.utils import save_picture, random_avatar, send_reset_email
+from src.user.utils import random_avatar, send_reset_email, save_picture
 
 users = Blueprint('users', __name__, template_folder='templates')
 

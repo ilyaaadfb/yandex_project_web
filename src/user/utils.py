@@ -41,10 +41,7 @@ def random_avatar(user):
     list_avatars = os.listdir(full_path_avatar)
     lst = random.choice(list_avatars)
     random_image_file = os.path.join(full_path_avatar, lst)
-    # print('random_image_file', random_image_file)
     shutil.copy(random_image_file, full_path)
-    # print('full_path', full_path)
-    # print(lst)
     return lst
 
 

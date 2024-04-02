@@ -117,15 +117,6 @@ def category(category_str):
                            current_category=current_category, title='Рубрика ' + category_str)
 
 
-@posts.route('/tgs/<string:tg_str>', methods=['GET', 'POST'])
-@login_required
-def tg(tg_str):
-    current_tg = Tg.query.filter_by(name=tg_str).first_or_404()
-    name_tgs = Tg.query.filter(Tg.name == current_tg.name).all()
-    return render_template('post/all_post_tg.html', name_tgs=name_tgs,
-                           current_tg=current_tg, title='Статьи тега ' + current_tg.name)
-
-
 @posts.route('/post/<string:slug>/delete', methods=['POST', 'GET'])
 @login_required
 def delete_post(slug):
