@@ -33,26 +33,10 @@ body,
 }
 
 
-.main_menu li {
-    display: flex;
-    width: 150px;
-    justify-content: center;
-    border-radius: 100px;
-    margin-top: 2%;
-    box-shadow: 10px 10px 10px grey;
-    font-size: 20px;
-    height: 30px;
-}
-
-
-.main_menu a {
-    text-decoration: none;
-    color: mediumaquamarine;
-}
-
 .header {
     font-size: 20px;
 }
+
 
 .header li:hover {
     font-size: 20px;
@@ -71,34 +55,10 @@ body,
 }
 
 
-.main_menu {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 50px;
-}
-
-
 .wrapper {
     display: flex;
     flex-direction: column;
 
-}
-
-
-.cascade_block {
-    display: flex;
-    margin: auto auto;
-    width: 80%;
-    border-radius: 200px;
-    border: 3px solid black;
-}
-
-
-.cascade_menu {
-    font-size: 35px;
-    margin: 0 auto;
-    padding: 0px 0;
-    text-align: center;
 }
 
 
@@ -125,52 +85,6 @@ body,
 .user_img_info img {
     width: 50px;
 
-}
-
-
-.info_name {
-    text-align: center;
-}
-
-
-.cascade_block_li {
-    width: 100%;
-    font-weight: 600;
-    color: dodgerblue;
-    margin: 0 auto;
-    text-align: center;
-    box-shadow: 0px 0px 0px skyblue;
-    border-radius: 200px;
-
-}
-
-.cascade_block_li .checkmark {
-    margin-bottom: 10px;
-    font-style: normal;
-    box-shadow: 5px 3px 10px grey;
-    font-size: 25px;
-    padding: 5px;
-    border-radius: 200px;
-    letter-spacing: 2px;
-    list-style: none;
-}
-
-
-ul .checkmark:before {
-    content: "\2713\0020";
-    color: forestgreen;
-}
-
-
-.checkmark a {
-    text-decoration: none;
-    color: mediumaquamarine;
-}
-
-
-.checkmark:hover {
-    transition-duration: 0.1s;
-    box-shadow: 0px 12px 10px orange;
 }
 
 
@@ -310,16 +224,12 @@ textarea[placeholder] {
     margin: 50px auto 0;
 }
 
+
 .tags {
     display: flex;
     justify-content: space-between;
 }
 
-
-.delete_tag a {
-    color: red;
-    text-decoration: none;
-}
 
 .list_posts {
     width: 60%;
@@ -351,72 +261,6 @@ textarea[placeholder] {
 .height_form {
     height: 10px;
     font-size: 1em;
-}
-
-
-.post_stat_side {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.comment_side {
-    margin: 10px;
-    padding: 10px 0;
-}
-
-
-.single_comment {
-    border: solid lightgrey 1px;
-    border-top: none;
-    margin: 0 0px 20px;
-    padding: 5px 10px;
-
-}
-
-
-.head_comment {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.left_comment_side {
-    margin-left: 10px;
-    font-size: 15px;
-}
-
-
-.right_comment_side {
-    margin-right: 10px;
-    font-size: 12px;
-
-}
-
-
-.body_comment {
-    text-align: left;
-    margin: 10px 40px;
-    padding: 10px 40px;
-}
-
-
-.stat_comment {
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.left_stat_side {
-    margin-left: 20px;
-    font-size: 15px;
-
-}
-
-
-.right_stat_side {
-    margin-right: 40px;
-    font-size: 15px;
 }
 
 
@@ -475,21 +319,8 @@ textarea[placeholder] {
 }
 
 
-.test {
-    margin: 0 auto;
-    outline: green 1px solid;
-    text-align: center;
-
-}
-
-
 .form-check {
     text-align: left;
-}
-
-
-.pad_top_card {
-    padding-top: 10px;
 }
 
 
@@ -536,6 +367,7 @@ textarea[placeholder] {
 }
 
 
+
 .info_user_site_right {
     font-size: 14px;
 
@@ -556,17 +388,6 @@ textarea[placeholder] {
 }
 
 
-.online_status {
-    display: flex;
-    height: 30px;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 25px;
-    margin-left: 20px;
-
-}
-
-
 .posts_category_side {
     text-align: center;
     margin-top: 40px;
@@ -574,21 +395,11 @@ textarea[placeholder] {
 
 }
 
+
 .list_posts_category {
     display: flex;
     justify-content: center;
     margin-top: 40px;
-
-}
-
-
-.online_user {
-    width: 13px;
-    height: 13px;
-    background-color: green;
-    border-radius: 200px;
-    text-align: right;
-    box-shadow: 0px 0px 20px 3px green;
 
 }
 
@@ -609,32 +420,6 @@ textarea[placeholder] {
 
 }
 
-
-.video_grid {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 40px auto 0;
-    align-items: center;
-
-}
-
-
-.single_cell {
-    width: 30%;
-    margin: 20px;
-    align-items: self;
-    text-align: center;
-
-}
-
-.single_cell iframe {
-    width: 100%;
-    height: 250px;
-    border-radius: 60px;
-    box-shadow: 20px 10px 10px 0px grey;
-
-}
 
 .post {
     border: 2px solid lightskyblue;

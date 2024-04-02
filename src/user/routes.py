@@ -78,7 +78,6 @@ def account():
         current_user.username = form.username.data
         current_user.email = form.email.data
 
-
         if form.picture.data:
             current_user.image_file = save_picture(form.picture.data, user)
         else:
@@ -103,31 +102,6 @@ def user_posts(username):
         .paginate(page=page, per_page=3)
 
     return render_template('user/user_posts.html', title='Общий сайт>', posts=posts, user=user)
-
-
-# @users.route('/user_delete/<string:username>', methods=['GET', 'POST'])
-# @login_required
-# def delete_user(username):
-#     try:
-#         user = User.query.filter_by(username=username).first_or_404()
-#         if user and not user.is_admin:
-#             db.session.delete(user)
-#             db.session.commit()
-#             full_path = os.path.join(os.getcwd(), UPLOAD_FOLDER, user.username)
-#             shutil.rmtree(full_path)
-#
-#             flash(f'Пользователь {username} был удалён!', 'info')
-#             return redirect(url_for('users.account'))
-#
-#     except sqlalchemy.exc.IntegrityError:
-#         flash(f'У пользователя {username} есть контент!', 'warning')
-#         return redirect(url_for('users.account'))
-#     except FileNotFoundError:
-#         return redirect(url_for('users.account'))
-#
-#     else:
-#         flash('Администрация!', 'info')
-#         return redirect(url_for('users.account'))
 
 
 @users.route('/reset_password', methods=['GET', 'POST'])

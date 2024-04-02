@@ -1,6 +1,5 @@
 from flask import Flask, url_for
 from flask_admin import Admin, expose, AdminIndexView, BaseView
-from flask_admin.contrib.sqla import ModelView
 from flask_login import LoginManager, login_required, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt

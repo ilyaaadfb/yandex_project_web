@@ -20,7 +20,6 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    # role = db.Column(db.String(20), index=True)
     last_seen = db.Column(db.DateTime)
     posts = db.relationship('Post', backref='author', lazy=True)
 
@@ -37,9 +36,6 @@ class User(db.Model, UserMixin):
             return None
         return User.query.get(user_id)
 
-    # @property
-    # def is_admin(self):
-    #     return self.role == 'admin'
 
     def __repr__(self):
         return f'User({self.id}, {self.username}, {self.email}, {self.password}, {self.image_file})'
@@ -54,7 +50,7 @@ class Post(db.Model):
     category = db.Column(db.String(100), nullable=False)
     image_post = db.Column(db.String(50), nullable=False, default='default.jpg')
     slug = db.Column(db.String(), unique=True, index=True)
-    tags = db.relationship('Tg', backref='tag_post', lazy=True, cascade="all, delete-orphan")
+    tags = db.relationship('Tg', backref='tg_post', lazy=True, cascade="all, delete-orphan")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
