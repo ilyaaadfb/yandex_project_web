@@ -16,10 +16,9 @@
     <link href="/static/css/style.css" rel="stylesheet">
 
 
-
     {% block title %}
 
-        <title>{{ title if title else 'Flask-site' }}</title>
+    <title>{{ title if title else 'Flask-site' }}</title>
 
     {% endblock title %}
 
@@ -29,16 +28,19 @@
 <div class="wrapper">
 
     {% block menu %}
-        <header class="header">
+    <header class="header">
 
-            {#    <div class="logo">#}
-            {#        <img src="{{ url_for('static', filename='img/logo-owl.jpg') }}" alt="logo">#}
+        {#
+        <div class="logo">#}
+            {# <img src="{{ url_for('static', filename='img/logo-owl.jpg') }}" alt="logo">#}
             {##}
-            {#    </div>#}
+            {#
+        </div>
+        #}
 
-            {% include 'menu.html' %}
+        {% include 'menu.html' %}
 
-        </header>
+    </header>
 
 
     {% endblock menu %}
@@ -51,13 +53,13 @@
                 <div class="col-md-12">
                     {% with messages = get_flashed_messages(with_categories=True) %}
 
-                        {% if messages %}
-                            {% for category, message in messages %}
-                                <div class="alert alert-{{ category }}">
-                                    {{ message }}
-                                </div>
-                            {% endfor %}
-                        {% endif %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
 
                     {% endwith %}
 
@@ -81,10 +83,9 @@
 
     {% block footer %}
 
-        <footer class="footer">Все права защищены!<br>
-            &#169; Гришин Илья 2024
+    <footer class="footer">&#169; Гришин Илья 2024
 
-        </footer>
+    </footer>
 
     {% endblock footer %}
 </div>

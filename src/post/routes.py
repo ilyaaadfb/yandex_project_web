@@ -8,7 +8,6 @@ from slugify import slugify
 from src import db
 from src.models import Post, Comment, Tag
 from src.post.forms import PostForm, PostUpdateForm, CommentUpdateForm
-from src.post.utils import save_picture_post_author
 from src.user.forms import AddCommentForm
 
 posts = Blueprint('posts', __name__, template_folder='templates')
@@ -89,15 +88,15 @@ def post(slug):
                            form_add_comment=form_comment, comment=comment, form_add_tag=form_post)
 
 
-@posts.route('/post/search')
-@login_required
-def search():
-    try:
-        keyword = request.args.get('q')
-        search_posts = Post.query.msearch(keyword, fields=['title', 'content'], limit=6)
-        return render_template('post/search.html', search_posts=search_posts, title='Поиск')
-    except AttributeError:
-        return redirect(url_for('users.account'))
+# @posts.route('/post/search')
+# @login_required
+# def search():
+#     try:
+#         keyword = request.args.get('q')
+#         search_posts = Post.query.msearch(keyword, fields=['title', 'content'], limit=6)
+#         return render_template('post/search.html', search_posts=search_posts, title='Поиск')
+#     except AttributeError:
+#         return redirect(url_for('users.account'))
 
 
 @posts.route('/post/<string:slug>/update', methods=['GET', 'POST'])
@@ -105,7 +104,6 @@ def search():
 def update_post(slug):
     post = Post.query.filter_by(slug=slug).first()
 
-    # чтобы нельзя было обновить чужую статью
     if post.author != current_user:
         flash('Нет доступа к обновлению статьи!', 'danger')
         return redirect(url_for('posts.post', slug=post.slug))
@@ -122,9 +120,7 @@ def update_post(slug):
 
         db.session.commit()
 
-        if form.picture.data:
-            post.image_post = save_picture_post_author(form.picture.data, post)
-        db.session.commit()
+
         flash('Данный пост был обновлён', 'success')
 
         return redirect(url_for('posts.post', slug=slug))
@@ -211,13 +207,13 @@ def delete_comment(comment_id):
     return redirect(url_for('posts.post', slug=return_to_post))
 
 
-@posts.route('/post/tag/<int:tag_id>/delete')
-@login_required
-def delete_tag(tag_id):
-    tag = Tag.query.get_or_404(tag_id)
-    if tag.tag_post.author != current_user:
-        abort(403)
-    db.session.delete(tag)
-    db.session.commit()
-    flash('Тег удален', 'success')
-    return redirect(url_for('posts.post', slug=tag.tag_post.slug))
+# @posts.route('/post/tag/<int:tag_id>/delete')
+# @login_required
+# def delete_tag(tag_id):
+#     tag = Tag.query.get_or_404(tag_id)
+#     if tag.tag_post.author != current_user:
+#         abort(403)
+#     db.session.delete(tag)
+#     db.session.commit()
+#     flash('Тег удален', 'success')
+#     return redirect(url_for('posts.post', slug=tag.tag_post.slug))

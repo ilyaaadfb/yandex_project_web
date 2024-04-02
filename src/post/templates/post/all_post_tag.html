@@ -3,21 +3,23 @@
 {% block content %}
 
 <div class="posts_category_side">
-Публикация тега: {{ current_tag.name }}
+    Публикация тега: {{ current_tag.name }}
 
 
-<div class="list_posts_category">
+    <div class="list_posts_category">
 
-<ol>
+        <ol>
 
-{% for post in name_tags %}
+            {% for post in name_tags %}
 
-    <li style="font-size: 20px; list-style: none;"><a href="{{ url_for('posts.post', slug=post.tag_post.slug) }}" style=" text-decoration: none;">
+            <li style="font-size: 20px; list-style: none;"><a
+                    href="{{ url_for('posts.post', slug=post.tag_post.slug) }}" style=" text-decoration: none;">
 
-        {{ post.tag_post.title|capitalize }}</a> {{ post.tag_post.author.username }}</li>
+                {{ post.tag_post.title|capitalize }}</a> {{ post.tag_post.author.username }}
+            </li>
 
-    {% endfor %}
-</ol>
-</div>
+            {% endfor %}
+        </ol>
     </div>
+</div>
 {% endblock %}

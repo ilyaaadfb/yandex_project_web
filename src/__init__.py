@@ -6,7 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_mail import Mail
-from flask_msearch import Search
+# from flask_msearch import Search
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -18,7 +18,7 @@ login_manager.login_message_category = 'info'
 login_manager.login_message = 'Авторизуйтесь, чтобы попасть на эту страницу!'
 
 mail = Mail()
-search = Search()
+# search = Search()
 
 
 class DashBoardView(AdminIndexView):
@@ -51,7 +51,7 @@ def create_app():
     login_manager.init_app(application)
     migrate.init_app(application, db, render_as_batch=True)
     mail.init_app(application)
-    search.init_app(application)
+    # search.init_app(application)
 
     from src.models import User, Post, Comment, Tag
 

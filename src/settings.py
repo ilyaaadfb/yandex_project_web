@@ -13,11 +13,3 @@ SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS'
 UPLOAD_FOLDER = os.path.join(basedir, 'src', 'static', 'profile_pics', 'users')
 
 REMEMBER_COOKIE_DURATION = timedelta(seconds=60)
-
-MAIL_USERNAME = os.environ.get('EMAIL_USER')
-MAIL_PASSWORD = os.environ.get('EMAIL_PASS')
-
-MAIL_SERVER = 'smtp.gmail.com'
-MAIL_PORT = 465
-MAIL_USE_TLS = False
-MAIL_USE_SSL = True
