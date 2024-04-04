@@ -11,7 +11,7 @@ from src import bcrypt, db
 from src.models import User, Post
 from src.settings import UPLOAD_FOLDER
 from src.user.forms import RegistrationForm, LoginForm, UpdateAccountForm, ResetPasswordForm, RequestResetForm
-from src.user.utils import random_avatar, send_reset_email, save_picture
+from src.user.utils import random_avatar, save_picture  # , send_reset_email
 
 users = Blueprint('users', __name__, template_folder='templates')
 
@@ -102,37 +102,6 @@ def user_posts(username):
         .paginate(page=page, per_page=3)
 
     return render_template('user/user_posts.html', title='Общий сайт>', posts=posts, user=user)
-
-
-@users.route('/reset_password', methods=['GET', 'POST'])
-def reset_request():
-    if current_user.is_authenticated:
-        return redirect(url_for('main.src'))
-    form = RequestResetForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        send_reset_email(user)
-        flash('На указанный емайл были отправлены инструкции по восстановлению пароля', 'info')
-        return redirect(url_for('users.login'))
-    return render_template('user/reset_request.html', form_reset=form, title='Сброс пароля')
-
-
-@users.route('/reset_password/<token>', methods=['GET', 'POST'])
-def reset_token(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('main.src'))
-    user = User.verify_reset_token(token)
-    if user is None:
-        flash('Не правильный или просроченный токен', 'warning')
-        return redirect(url_for('users.reset_request'))
-    form = ResetPasswordForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user.password = hashed_password
-        db.session.commit()
-        flash('Ваш пароль был обновлён! Вы можете войти на сайт', 'success')
-        return redirect(url_for('users.login'))
-    return render_template('user/reset_token.html', form_reset_password=form, title='Новый пароль')
 
 
 @users.route('/logout')
