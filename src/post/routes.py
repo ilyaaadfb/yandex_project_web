@@ -26,7 +26,7 @@ def new_post():
 
             name = form.tg_form.data.split('/')
             for i in name:
-                tg_post = Tg(name=i)  # создаю тег
+                tg_post = Tg(name=i)
                 tg_post.post_id = post.id
                 db.session.add(tg_post)
             db.session.commit()
