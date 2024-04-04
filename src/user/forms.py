@@ -2,8 +2,8 @@ from flask import flash
 from flask_login import current_user
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField, SelectField
-from wtforms.validators import DataRequired, EqualTo, Length, Email, ValidationError, InputRequired
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField
+from wtforms.validators import DataRequired, EqualTo, Length, Email, ValidationError
 from src.models import User
 
 
@@ -13,7 +13,6 @@ class RegistrationForm(FlaskForm):
     email = StringField('Емайл', validators=[DataRequired(), Email()])
     password = PasswordField('Пароль', validators=[DataRequired()])
     confirm_password = PasswordField('Подтвердите пароль', validators=[DataRequired(), EqualTo('password')])
-    # role = SelectField('Роли', choices=[('admin', 'admin'), ('user', 'user')])
     submit = SubmitField('Войти')
 
     def validate_username(self, username):

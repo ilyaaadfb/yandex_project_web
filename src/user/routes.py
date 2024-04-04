@@ -1,8 +1,6 @@
 import os
-import shutil
 from datetime import datetime
 
-import sqlalchemy
 from flask import Blueprint, render_template, flash, url_for, request
 from flask_login import current_user, logout_user, login_required, login_user
 from werkzeug.utils import redirect
@@ -10,8 +8,8 @@ from werkzeug.utils import redirect
 from src import bcrypt, db
 from src.models import User, Post
 from src.settings import UPLOAD_FOLDER
-from src.user.forms import RegistrationForm, LoginForm, UpdateAccountForm, ResetPasswordForm, RequestResetForm
-from src.user.utils import random_avatar, save_picture  # , send_reset_email
+from src.user.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from src.user.utils import random_avatar, save_picture
 
 users = Blueprint('users', __name__, template_folder='templates')
 
