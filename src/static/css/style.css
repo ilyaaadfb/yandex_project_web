@@ -322,9 +322,7 @@ textarea[placeholder] {
 
 .new_post,
 .log_in,
-.sign_in,
-.reset_pass,
-.reset_token {
+.sign_in {
     width: 60%;
     margin: 100px auto;
     text-align: center;
