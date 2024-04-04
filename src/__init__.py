@@ -1,6 +1,6 @@
-from flask import Flask, url_for
-from flask_admin import Admin, expose, AdminIndexView, BaseView
-from flask_login import LoginManager, login_required, current_user
+from flask import Flask
+from flask_admin import expose, BaseView
+from flask_login import LoginManager
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
@@ -18,30 +18,14 @@ login_manager.login_message = 'Авторизуйтесь, чтобы попас
 mail = Mail()
 
 
-class DashBoardView(AdminIndexView):
-    @login_required
-    @expose('/')
-    def admin_panel(self):
-        from src.models import User
-        all_users = User.query.all()
-        image_file = url_for('static',
-                             filename=f'profile_pics' + '/users/' + current_user.username + '/account_img/' +
-                                      current_user.image_file)
-        return self.render('admin/index_admin.html', all_users=all_users, image_file=image_file)
-
-
 class AnyPageView(BaseView):
     @expose('/')
     def any_page(self):
         return self.render('main/index.html')
 
 
-admin = Admin(name='Admin Board', template_mode='bootstrap3', index_view=DashBoardView(), endpoint='admin')
-
-
 def create_app():
     application = Flask(__name__)
-    admin.init_app(application)
     application.config.from_pyfile('settings.py')
     db.init_app(application)
     bcrypt.init_app(application)

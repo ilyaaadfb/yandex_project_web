@@ -4,9 +4,7 @@ import random
 import shutil
 
 from PIL import Image
-from flask import current_app, url_for
-from flask_mail import Message
-from src import mail
+from flask import current_app
 
 
 def save_picture(form_picture, user):
