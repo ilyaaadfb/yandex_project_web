@@ -11,7 +11,7 @@ def home():
     return render_template('main/index.html', title='Главная страница')
 
 
-@main.route('/src', methods=['POST', 'GET'])
+@main.route('/publication', methods=['POST', 'GET'])
 @login_required
 def src():
     all_posts = Post.query.order_by(Post.title.desc()).all()
