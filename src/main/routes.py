@@ -8,7 +8,7 @@ main = Blueprint('main', __name__, template_folder='templates')
 
 @main.route('/')
 def home():
-    return render_template('main/index.html', title='Главная')
+    return render_template('main/index.html', title='Главная страница')
 
 
 @main.route('/src', methods=['POST', 'GET'])
