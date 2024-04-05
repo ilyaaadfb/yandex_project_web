@@ -26,7 +26,7 @@ class AnyPageView(BaseView):
 
 def create_app():
     application = Flask(__name__)
-    application.config.from_pyfile('settings.py')
+    application.config.from_pyfile('config.py')
     db.init_app(application)
     bcrypt.init_app(application)
     login_manager.init_app(application)

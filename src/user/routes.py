@@ -7,7 +7,7 @@ from werkzeug.utils import redirect
 
 from src import bcrypt, db
 from src.models import User, Post
-from src.settings import UPLOAD_FOLDER
+from src.config import UPLOAD_FOLDER
 from src.user.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from src.user.utils import random_avatar, save_picture
 
