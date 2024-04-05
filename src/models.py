@@ -45,7 +45,7 @@ class Post(db.Model):
     category = db.Column(db.String(100), nullable=False)
     image_post = db.Column(db.String(50), nullable=False, default='default.jpg')
     slug = db.Column(db.String(), unique=True, index=True)
-    tags = db.relationship('Tg', backref='tg_post', lazy=True, cascade="all, delete-orphan")
+    tg = db.relationship('Tg', backref='tg_post', lazy=True, cascade="all, delete-orphan")
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
 
@@ -54,7 +54,7 @@ class Post(db.Model):
 
 
 class Tg(db.Model):
-    __tablename__ = 'tags'
+    __tablename__ = 'tg'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), unique=False, nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='CASCADE'), nullable=False)

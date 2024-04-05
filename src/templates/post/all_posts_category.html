@@ -14,7 +14,7 @@
 
             <li style="font-size: 20px; list-style: none;"><a href="{{ url_for('posts.post', slug=post.slug) }}"
                                                               style=" text-decoration: none;"> {{ post.title|safe }}</a>
-                ({{post.tags|count}})
+                ({{post.tg|count}})
             </li>
 
             {% endfor %}
