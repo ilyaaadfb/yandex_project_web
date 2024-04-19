@@ -30,13 +30,13 @@ def new_post():
                 tg_post.post_id = post.id
                 db.session.add(tg_post)
             db.session.commit()
-            flash('Пост был опубликован!', 'success')
+            flash('Публикация была опубликована!', 'success')
             return redirect(url_for('main.src'))
         else:
             if request.method == 'POST':
                 flash('Формат изображения должен быть "jpg", "png"', 'success')
     except PIL.UnidentifiedImageError:
-        flash('Выберите изображение для статьи', 'danger')
+        flash('Выберите изображение для публикации', 'danger')
     except sqlalchemy.exc.IntegrityError:
         flash('Такой заголовок уже существует', 'danger')
         db.session.rollback()
@@ -44,8 +44,8 @@ def new_post():
     image_file = url_for('static',
                          filename=f'profile_pics/' + 'users/' + current_user.username + '/post_images/'
                                   + current_user.image_file)
-    return render_template('post/create_post.html', title='Новая статья',
-                           form_new_post=form, legend='Новая статья', image_file=image_file)
+    return render_template('post/create_post.html', title='Новая публикация',
+                           form_new_post=form, legend='Новая публикация', image_file=image_file)
 
 
 @posts.route('/post/<string:slug>', methods=['GET', 'POST'])
@@ -63,7 +63,7 @@ def post(slug):
                     tg_post.post_id = post.id
                     db.session.add(tg_post)
                 db.session.commit()
-                flash('Тег к посту был добавлен', "success")
+                flash('Тег к публикации был добавлен', "success")
                 return redirect(url_for('posts.post', slug=post.slug))
 
         add_tg()
@@ -80,7 +80,7 @@ def update_post(slug):
     post = Post.query.filter_by(slug=slug).first()
 
     if post.author != current_user:
-        flash('Нет доступа к обновлению статьи!', 'danger')
+        flash('Нет доступа к обновлению публикации!', 'danger')
         return redirect(url_for('posts.post', slug=post.slug))
     form = PostUpdateForm()
     if request.method == 'GET':
@@ -95,7 +95,7 @@ def update_post(slug):
 
         db.session.commit()
 
-        flash('Данный пост был обновлён', 'success')
+        flash('Данная публикация была обновлена', 'success')
 
         return redirect(url_for('posts.post', slug=slug))
     else:
@@ -105,7 +105,7 @@ def update_post(slug):
                          filename=f'profile_pics/users/{current_user.username}/post_images/{post.image_post}')
 
     return render_template('post/update_post.html', title='Обновление ' + post.title,
-                           form_post_update=form, legend='Обновить статью', image_file=image_file, post=post)
+                           form_post_update=form, legend='Обновить публикацию', image_file=image_file, post=post)
 
 
 @posts.route('/posts/<string:category_str>/', methods=['GET', 'POST'])
@@ -132,5 +132,5 @@ def delete_post(slug):
         db.session.delete(post)
 
     db.session.commit()
-    flash('Данный пост был удален', 'success')
+    flash('Данный публикация была удалена', 'success')
     return redirect(url_for('users.account'))

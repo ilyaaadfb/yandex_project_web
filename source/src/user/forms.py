@@ -65,9 +65,3 @@ class RequestResetForm(FlaskForm):
         if user is None:
             flash('Нет аккаунта с такой электронной почтой', 'danger')
             raise ValidationError('There is no account with that email. You must register first')
-
-
-class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Пароль', validators=[DataRequired()])
-    confirm_password = PasswordField('Подтвердите пароль', validators=[DataRequired(), EqualTo('password')])
-    submit = SubmitField('Сбросить пароль')
