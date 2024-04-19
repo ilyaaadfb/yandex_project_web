@@ -26,19 +26,6 @@
 
     </div>
 
-    <div class="list_posts">
-        <h5>..Список ваших публикаций: </h5>
-
-        <ol class="list_account_posts">
-            {% for post in user.posts %}
-            <li><a href="{{ url_for('posts.post', slug=post.slug)}}">{{ post.title|safe }}</a>
-                рубрика: <a href="{{ url_for('posts.category', category_str=post.category) }}">{{ post.category }}</a>
-            </li>
-            {% endfor %}
-        </ol>
-
-
-    </div>
     <div class="right_side">
         <div class="card">
 
@@ -144,6 +131,20 @@
 
             </form>
         </div>
+    </div>
+
+    <div class="list_posts">
+        <h5>..Список ваших публикаций: </h5>
+
+        <ol class="list_account_posts">
+            {% for post in user.posts %}
+            <li><a href="{{ url_for('posts.post', slug=post.slug)}}">{{ post.title|safe }}</a>
+                рубрика: <a href="{{ url_for('posts.category', category_str=post.category) }}">{{ post.category }}</a>
+            </li>
+            {% endfor %}
+        </ol>
+
+
     </div>
 </div>
 <div class="empty_block"></div>

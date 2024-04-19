@@ -264,6 +264,7 @@ textarea[placeholder] {
 
 
 .right_side {
+    margin-left: 300px;
     text-align: center;
     width: 250px;
 
@@ -364,21 +365,6 @@ textarea[placeholder] {
 }
 
 
-.info_user_site_left img {
-    outline: orange 1px solid;
-    box-shadow: 2px 2px 12px 9px lightgrey;
-    margin-right: 20px;
-
-}
-
-
-.info_user_site_left a {
-    text-decoration: none;
-    color: grey;
-}
-
-
-
 .info_user_site_right {
     font-size: 14px;
 
@@ -437,4 +423,9 @@ textarea[placeholder] {
     padding: 20px;
     margin: 20px;
     border-radius: 30px;
+}
+
+
+.footer__tg__img {
+    height: 20px;
 }
