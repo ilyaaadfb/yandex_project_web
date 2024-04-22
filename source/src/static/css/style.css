@@ -17,13 +17,14 @@ body,
     background-color: white;
     border-radius: 200px;
     font-size: 16px;
-    color: green;
-    width: 60%;
+    color: #0D6EFD;
+    width: 40%;
     margin: 5px auto;
     padding: 7px 0;
     text-align: center;
     height: 40px;
     align-items: center;
+    border: 0.5px solid #0D6EFD;
 
 }
 
@@ -264,7 +265,7 @@ textarea[placeholder] {
 
 
 .right_side {
-    margin-left: 300px;
+    margin-left: 400px;
     text-align: center;
     width: 250px;
 
@@ -310,8 +311,9 @@ textarea[placeholder] {
     display: flex;
     height: 60px;
     padding: 10px 15px;
-    background-color: lightblue;
     align-items: center;
+    border-radius: 30px;
+    border: 0.5px solid #0D6EFD;
 }
 
 
@@ -419,7 +421,7 @@ textarea[placeholder] {
 
 
 .post {
-    border: 2px solid lightskyblue;
+    border: 2px solid #0D6EFD;
     padding: 20px;
     margin: 20px;
     border-radius: 30px;
@@ -428,4 +430,9 @@ textarea[placeholder] {
 
 .footer__tg__img {
     height: 20px;
+}
+
+
+.left_side {
+    border-right: 0.5px solid grey;
 }

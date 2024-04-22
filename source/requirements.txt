@@ -1,5 +1,5 @@
 alembic==1.6.5
-bcrypt==3.2.0
+bcrypt==4.1.2
 blinker==1.4
 cffi==1.15.0
 click==8.0.3
