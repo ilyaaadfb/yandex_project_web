@@ -23,15 +23,6 @@ class User(db.Model, UserMixin):
     last_seen = db.Column(db.DateTime)
     posts = db.relationship('Post', backref='author', lazy=True)
 
-    @staticmethod
-    def verify_reset_token(token):
-        s = Serializer(current_app.config['SECRET_KEY'])
-        try:
-            user_id = s.loads(token)['user_id']
-        except:
-            return None
-        return User.query.get(user_id)
-
     def __repr__(self):
         return f'User({self.id}, {self.username}, {self.email}, {self.password}, {self.image_file})'
 

@@ -1,5 +1,5 @@
 alembic==1.6.5
-bcrypt==4.1.2
+bcrypt==3.2.0
 blinker==1.4
 cffi==1.15.0
 click==8.0.3
@@ -7,7 +7,11 @@ colorama==0.4.4
 dnspython==2.1.0
 dominate==2.6.0
 email-validator==1.1.3
+<<<<<<< HEAD
 Flask==2.3.3
+=======
+Flask==2.0.2
+>>>>>>> fd6efabf8523a4542bfd6a3a20e212179170040e
 Flask-Admin==1.6.0
 Flask-Bcrypt==0.7.1
 Flask-Bootstrap==3.3.7.1
@@ -20,11 +24,11 @@ Flask-WTF==1.0.0
 greenlet==1.1.2
 idna==3.3
 itsdangerous==2.0.1
-Jinja2==3.1.3
-Mako==1.3.3
+Jinja2==3.0.3
+Mako==1.1.5
 MarkupSafe==2.0.1
 mimesis==5.1.1
-PIL==8.3.2
+Pillow==10.3.0
 pycparser==2.21
 python-dateutil==2.8.2
 python-dotenv==0.19.2
@@ -34,5 +38,5 @@ six==1.16.0
 SQLAlchemy==1.4.28
 text-unidecode==1.3
 visitor==0.1.3
-Werkzeug==3.0.2
+Werkzeug==2.0.2
 WTForms==3.0.0

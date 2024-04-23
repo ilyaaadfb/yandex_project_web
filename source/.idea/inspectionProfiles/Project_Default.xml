@@ -4,6 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
+<<<<<<< HEAD
           <list size="96">
             <item index="0" class="java.lang.String" itemvalue="altgraph" />
             <item index="1" class="java.lang.String" itemvalue="qt5-applications" />
@@ -101,10 +102,21 @@
             <item index="93" class="java.lang.String" itemvalue="ipython" />
             <item index="94" class="java.lang.String" itemvalue="typing_extensions" />
             <item index="95" class="java.lang.String" itemvalue="debugpy" />
+=======
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="PIL" />
+            <item index="1" class="java.lang.String" itemvalue="greenlet" />
+            <item index="2" class="java.lang.String" itemvalue="cffi" />
+            <item index="3" class="java.lang.String" itemvalue="blinker" />
+            <item index="4" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="5" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="6" class="java.lang.String" itemvalue="click" />
+>>>>>>> fd6efabf8523a4542bfd6a3a20e212179170040e
           </list>
         </value>
       </option>
     </inspection_tool>
+<<<<<<< HEAD
     <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
       <option name="ignoredErrors">
         <list>
@@ -128,5 +140,7 @@
         </list>
       </option>
     </inspection_tool>
+=======
+>>>>>>> fd6efabf8523a4542bfd6a3a20e212179170040e
   </profile>
 </component>

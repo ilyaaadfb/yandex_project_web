@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
 from flask_mail import Mail
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -26,6 +28,7 @@ class AnyPageView(BaseView):
 
 def create_app():
     application = Flask(__name__)
+
     application.config.from_pyfile('config.py')
     db.init_app(application)
     bcrypt.init_app(application)
@@ -39,6 +42,11 @@ def create_app():
     from src.user.routes import users
     from src.post.routes import posts
     from src.errors.handlers import errors
+
+    admin = Admin(application)
+    admin.add_view(ModelView(User, db.session))
+    admin.add_view(ModelView(Post, db.session))
+    admin.add_view(ModelView(Tg, db.session))
 
     application.register_blueprint(main)
     application.register_blueprint(users)

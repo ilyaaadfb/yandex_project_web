@@ -14,11 +14,6 @@ from src.user.utils import random_avatar, save_picture
 users = Blueprint('users', __name__, template_folder='templates')
 
 
-@users.route('/admin', methods=['GET'])
-def admin_panel():
-    return redirect(url_for('any_page'))
-
-
 @users.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
